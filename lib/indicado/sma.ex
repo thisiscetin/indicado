@@ -52,14 +52,13 @@ defmodule Indicado.SMA do
     end
   end
 
-  @doc false
   defp calc(list, period, result \\ [])
 
   defp calc([], _period, []), do: {:error, :not_enough_data}
 
   defp calc(_list, period, _results) when period < 1, do: {:error, :bad_period}
 
-  defp calc([], _period, results), do: {:ok, results}
+  defp calc([], _period, results), do: {:ok, Enum.reverse(results)}
 
   defp calc([_head | tail] = list, period, results) do
     cond do
@@ -69,7 +68,7 @@ defmodule Indicado.SMA do
         |> Enum.sum
         |> Kernel./(period)
 
-        calc(tail, period, results ++ [avg])
+        calc(tail, period, [avg | results])
       true -> calc(tail, period, results)
     end
   end
