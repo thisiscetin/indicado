@@ -1,6 +1,6 @@
 defmodule Indicado.SMA do
   @moduledoc """
-  This is the SMA module.
+  This is the SMA module used for calculating Simple Moving Average.
   """
 
   @doc """
@@ -24,7 +24,8 @@ defmodule Indicado.SMA do
   def eval(list, period), do: calc(list, period)
 
   @doc """
-  Calculates SMA for the list.
+  Calculates SMA for the list. Raises exceptions when arguments does not satisfy needed conditions
+  to calculate SMA.
 
   Raises `NotEnoughDataError` if the given list is not longh enough for calculating SMA.
   Raises `BadPeriodError` if period is an unacceptable number.
@@ -50,7 +51,7 @@ defmodule Indicado.SMA do
     end
   end
 
-  defp calc(list, period, result \\ [])
+  defp calc(list, period, results \\ [])
 
   defp calc([], _period, []), do: {:error, :not_enough_data}
 
