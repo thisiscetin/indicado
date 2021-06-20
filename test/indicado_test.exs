@@ -1,4 +1,4 @@
 defmodule IndicadoTest do
   use ExUnit.Case
-  doctest Indicado.Sma
+  doctest Indicado.SMA
 end

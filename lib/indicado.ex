@@ -1,5 +1,6 @@
 defmodule Indicado do
   @moduledoc """
-  This is documentation for Indicado.
+  Indicado helps you analyze historical data
+  to generate future price movement predictions on numerical datasets.
   """
 end
