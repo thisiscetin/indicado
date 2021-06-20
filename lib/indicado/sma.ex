@@ -20,10 +20,8 @@ defmodule Indicado.SMA do
       {:error, :bad_period}
 
   """
-
   @spec eval(nonempty_list(list), pos_integer) :: {:ok, nonempty_list(float)} | {:error, atom}
   def eval(list, period), do: calc(list, period)
-
 
   @doc """
   Calculates SMA for the list.
