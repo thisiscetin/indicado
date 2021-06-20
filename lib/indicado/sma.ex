@@ -10,14 +10,15 @@ defmodule Indicado.SMA do
 
   ## Examples
 
-    iex> Indicado.SMA.eval([1, 3, 5, 7], 2)
-    {:ok, [2.0, 4.0, 6.0]}
+      iex> Indicado.SMA.eval([1, 3, 5, 7], 2)
+      {:ok, [2.0, 4.0, 6.0]}
 
-    iex> Indicado.SMA.eval([1, 3], 3)
-    {:error, :not_enough_data}
+      iex> Indicado.SMA.eval([1, 3], 3)
+      {:error, :not_enough_data}
 
-    iex> Indicado.SMA.eval([1, 3, 4], 0)
-    {:error, :bad_period}
+      iex> Indicado.SMA.eval([1, 3, 4], 0)
+      {:error, :bad_period}
+
   """
 
   @spec eval(nonempty_list(list), pos_integer) :: {:ok, nonempty_list(float)} | {:error, atom}
@@ -32,14 +33,15 @@ defmodule Indicado.SMA do
 
   ## Examples
 
-    iex> Indicado.SMA.eval!([1, 3, 5, 7], 2)
-    [2.0, 4.0, 6.0]
+      iex> Indicado.SMA.eval!([1, 3, 5, 7], 2)
+      [2.0, 4.0, 6.0]
 
-    iex> Indicado.SMA.eval!([1, 3], 3)
-    ** (NotEnoughDataError) not enough data
+      iex> Indicado.SMA.eval!([1, 3], 3)
+      ** (NotEnoughDataError) not enough data
 
-    iex> Indicado.SMA.eval!([1, 3, 4], 0)
-    ** (BadPeriodError) bad period
+      iex> Indicado.SMA.eval!([1, 3, 4], 0)
+      ** (BadPeriodError) bad period
+
   """
   @spec eval!(nonempty_list(list), pos_integer) :: nonempty_list(float) | no_return
   def eval!(list, period) do
