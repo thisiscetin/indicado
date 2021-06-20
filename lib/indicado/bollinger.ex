@@ -93,12 +93,15 @@ defmodule Indicado.Bollinger do
   defp calc([_head | tail] = list, period, deviation, results) do
     cond do
       length(list) >= period ->
-        row = list
-        |> Enum.take(period)
-        |> bb_row(deviation)
+        row =
+          list
+          |> Enum.take(period)
+          |> bb_row(deviation)
 
         calc(tail, period, deviation, [row | results])
-      true -> calc(tail, period, deviation, results)
+
+      true ->
+        calc(tail, period, deviation, results)
     end
   end
 
@@ -106,6 +109,6 @@ defmodule Indicado.Bollinger do
     mean = Indicado.Math.mean(list)
     stddev = Indicado.Math.stddev(list, mean)
 
-    %{lower: (mean - stddev * deviation), mean: mean, upper: (mean + stddev * deviation)}
+    %{lower: mean - stddev * deviation, mean: mean, upper: mean + stddev * deviation}
   end
 end

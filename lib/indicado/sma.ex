@@ -62,13 +62,16 @@ defmodule Indicado.SMA do
   defp calc([_head | tail] = list, period, results) do
     cond do
       length(list) >= period ->
-        avg = list
-        |> Enum.take(period)
-        |> Enum.sum
-        |> Kernel./(period)
+        avg =
+          list
+          |> Enum.take(period)
+          |> Enum.sum()
+          |> Kernel./(period)
 
         calc(tail, period, [avg | results])
-      true -> calc(tail, period, results)
+
+      true ->
+        calc(tail, period, results)
     end
   end
 end

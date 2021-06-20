@@ -20,6 +20,7 @@ defmodule Indicado.Math do
   """
   @spec variance(nonempty_list(list)) :: float
   def variance([]), do: nil
+
   def variance(list) do
     variance(list, mean(list))
   end
@@ -41,6 +42,7 @@ defmodule Indicado.Math do
   """
   @spec variance(nonempty_list(list), float) :: nil | float
   def variance([], _calculated_mean), do: nil
+
   def variance(list, calculated_mean) do
     list
     |> Enum.map(fn x -> (calculated_mean - x) * (calculated_mean - x) end)
@@ -64,7 +66,7 @@ defmodule Indicado.Math do
   """
   @spec stddev(nonempty_list(list)) :: float
   def stddev([]), do: nil
-  def stddev(list), do: list |> variance |> :math.sqrt
+  def stddev(list), do: list |> variance |> :math.sqrt()
 
   @doc """
   Calculates standard deviation of a given numeric list when mean is pre calculated and passed.
@@ -83,7 +85,7 @@ defmodule Indicado.Math do
   """
   @spec stddev([list], float) :: nil | float
   def stddev([], _calculated_mean), do: nil
-  def stddev(list, calculated_mean), do: list |> variance(calculated_mean) |> :math.sqrt
+  def stddev(list, calculated_mean), do: list |> variance(calculated_mean) |> :math.sqrt()
 
   @doc """
   Calculated mean of a given numeric list.
@@ -102,9 +104,10 @@ defmodule Indicado.Math do
   """
   @spec mean(nonempty_list(list)) :: float
   def mean([]), do: nil
+
   def mean(list) do
     list
-    |> Enum.sum
+    |> Enum.sum()
     |> Kernel./(length(list))
   end
 end
