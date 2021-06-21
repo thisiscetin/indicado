@@ -72,28 +72,23 @@ defmodule Indicado.RSI do
   defp calc([_head | tail] = list, period, results) do
     cond do
       length(list) >= period + 1 ->
-        {pos_values, neg_values} =
+        averages =
           list
           |> Enum.take(period + 1)
           |> Enum.chunk_every(2, 1, :discard)
           |> Enum.map(fn [x, y] -> y - x end)
-          |> Enum.split_with(fn x -> x > 0 end)
+          |> Enum.group_by(fn x -> if x > 0, do: :gain, else: :loss end)
+          |> Map.new(fn
+            {type, []} -> {type, nil}
+            {type, values} -> {type, Enum.sum(values) / period}
+          end)
+          |> Map.put_new(:loss, 0.0)
+          |> Map.put_new(:gain, 0.0)
 
-        avg_gain =
-          pos_values
-          |> Enum.sum()
-          |> Kernel./(period)
-
-        avg_loss =
-          neg_values
-          |> Enum.sum()
-          |> Kernel./(period)
-          |> abs
-
-        if avg_loss == 0 do
+        if averages.loss == 0 do
           calc(tail, period, [100.0 | results])
         else
-          rs = avg_gain / avg_loss
+          rs = averages.gain / abs(averages.loss)
           rsi = 100.0 - 100.0 / (1.0 + rs)
 
           calc(tail, period, [rsi | results])
