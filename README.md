@@ -7,13 +7,14 @@
 One idea is, you can follow up the cryptocurrency [trading bot series](https://www.youtube.com/watch?v=wVYIx7M6o28) of Frathon here. You can bring this library and a similar trading infrastructure explained in the video together. So, you can generate trading strategies with the indicators below and increase your chances of profiting.
 
 ## Table of Contents 📋
-- [Indicado (Work in Progress)](#indicado-work-in-progress)
-- [Table of Contents](#table-of-contents)
-- [Supported Indicators](#supported-indicators)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [Development](#development)
+- [Indicado (Work in Progress) 🧮](#indicado-work-in-progress-)
+- [What can you do with this library ❔](#what-can-you-do-with-this-library-)
+- [Table of Contents 📋](#table-of-contents-)
+- [Supported Indicators 📈](#supported-indicators-)
+- [Installation 💻](#installation-)
+- [Usage 🛠️](#usage-️)
+- [Contributing 🧵](#contributing-)
+- [Development 👷](#development-)
 
 ## Supported Indicators 📈
 Indicators below are supported.
