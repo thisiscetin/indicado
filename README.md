@@ -19,10 +19,11 @@ One idea is, you can follow up the cryptocurrency [trading bot series](https://w
 ## Supported Indicators 📈
 Indicators below are supported.
 - Bollinger Bands ([BB](https://www.investopedia.com/terms/b/bollingerbands.asp))
-- Simple Moving Average ([SMA](https://www.investopedia.com/terms/s/sma.asp))
+- Exponential Moving Average ([EMA](https://www.investopedia.com/terms/e/ema.asp))
 - Relative Strength Index ([RSI](https://www.investopedia.com/terms/r/rsi.asp))
+- Simple Moving Average ([SMA](https://www.investopedia.com/terms/s/sma.asp))
 
-Helper math functions such as mean, stddev, variance can be accessible through `Indicado.Math` module.
+Helper math functions such as mean, stddev, variance is accessible through `Indicado.Math` module.
 
 ## Installation 💻
 
