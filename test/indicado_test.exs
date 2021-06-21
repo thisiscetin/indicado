@@ -3,4 +3,5 @@ defmodule IndicadoTest do
   doctest Indicado.SMA
   doctest Indicado.Math
   doctest Indicado.Bollinger
+  doctest Indicado.RSI
 end
