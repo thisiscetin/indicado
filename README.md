@@ -20,6 +20,7 @@ One idea is, you can follow up the cryptocurrency [trading bot series](https://w
 Indicators below are supported.
 - Bollinger Bands ([BB](https://www.investopedia.com/terms/b/bollingerbands.asp))
 - Exponential Moving Average ([EMA](https://www.investopedia.com/terms/e/ema.asp))
+- Moving Average Convergence Divergence ([MACD](https://www.investopedia.com/terms/m/macd.asp))
 - Relative Strength Index ([RSI](https://www.investopedia.com/terms/r/rsi.asp))
 - Simple Moving Average ([SMA](https://www.investopedia.com/terms/s/sma.asp))
 

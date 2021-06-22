@@ -5,4 +5,5 @@ defmodule IndicadoTest do
   doctest Indicado.Bollinger
   doctest Indicado.RSI
   doctest Indicado.EMA
+  doctest Indicado.MACD
 end
