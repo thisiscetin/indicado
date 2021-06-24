@@ -18,6 +18,7 @@ One idea is, you can follow up the cryptocurrency [trading bot series](https://w
 
 ## Supported Indicators 📈
 Indicators below are supported.
+- Accumulation/Distribution Line ([ADI](https://www.investopedia.com/terms/a/accumulationdistribution.asp))
 - Bollinger Bands ([BB](https://www.investopedia.com/terms/b/bollingerbands.asp))
 - Exponential Moving Average ([EMA](https://www.investopedia.com/terms/e/ema.asp))
 - Moving Average Convergence Divergence ([MACD](https://www.investopedia.com/terms/m/macd.asp))
