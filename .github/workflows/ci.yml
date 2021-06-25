@@ -1,4 +1,4 @@
-name: Elixir CI
+name: ci
 
 on:
   push:
@@ -31,26 +31,21 @@ jobs:
 
     - name: Run mix format
       run: mix format --check-formatted
-      if: ${{ matrix.lint }}
 
     - name: Run mix deps.unlock
       run: mix deps.unlock --check-unused
-      if: ${{ matrix.lint }}
 
     - name: Run mix deps.compile
       run: mix deps.compile
 
     - name: Run mix compile
       run: mix compile --warnings-as-errors
-      if: ${{ matrix.lint }}
 
     - name: Run credo
       run: mix credo --strict
-      if: ${{ matrix.lint }}
 
     - name: Run mix test
       run: mix test
 
     - name: Run dialyzer
       run: mix dialyzer
-      if: ${{ matrix.lint }}
