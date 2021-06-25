@@ -1,4 +1,4 @@
-## Indicado (Work in Progress) 🧮
+## Indicado 🧮
 
 [Technical indicator](https://www.investopedia.com/terms/t/technicalindicator.asp) library for Elixir with no external dependency. Indicado helps you analyze historical data to generate future price movement predictions on numerical datasets. Many traders and automated trading platforms use technical analysis because past actions may indicate future prices. Indicado might also be used outside financial markets if data hold patterns and not random.
 
@@ -17,7 +17,7 @@ One idea is, you can follow up the cryptocurrency [trading bot series](https://w
 - [Development 👷](#development-)
 
 ## Supported Indicators 📈
-Indicators below are supported.
+Indicators below are supported. New indicators being added regularly.
 - Accumulation/Distribution Line ([ADI](https://www.investopedia.com/terms/a/accumulationdistribution.asp))
 - Bollinger Bands ([BB](https://www.investopedia.com/terms/b/bollingerbands.asp))
 - Exponential Moving Average ([EMA](https://www.investopedia.com/terms/e/ema.asp))
