@@ -25,7 +25,32 @@ jobs:
         path: deps
         key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
         restore-keys: ${{ runner.os }}-mix-
-    - name: Install dependencies
-      run: mix deps.get
-    - name: Run Checks & Tests
-      run: mix test.ci
+
+    - name: Run mix deps.get
+      run: mix deps.get --only test
+
+    - name: Run mix format
+      run: mix format --check-formatted
+      if: ${{ matrix.lint }}
+
+    - name: Run mix deps.unlock
+      run: mix deps.unlock --check-unused
+      if: ${{ matrix.lint }}
+
+    - name: Run mix deps.compile
+      run: mix deps.compile
+
+    - name: Run mix compile
+      run: mix compile --warnings-as-errors
+      if: ${{ matrix.lint }}
+
+    - name: Run credo
+      run: mix credo --strict
+      if: ${{ matrix.lint }}
+
+    - name: Run mix test
+      run: mix test
+
+    - name: Run dialyzer
+      run: mix dialyzer
+      if: ${{ matrix.lint }}
