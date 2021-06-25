@@ -38,7 +38,7 @@ defmodule Indicado.MACD do
       {:error, :bad_period}
   """
   @spec eval(list, pos_integer, pos_integer, pos_integer) ::
-          {:ok, nonempty_list(map)} | {:error, :atom}
+          {:ok, nonempty_list(map)} | {:error, :bad_period | :not_enough_data}
   def eval(list, fast_period, slow_period, signal_period),
     do: calc(list, fast_period, slow_period, signal_period)
 
