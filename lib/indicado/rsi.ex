@@ -69,33 +69,31 @@ defmodule Indicado.RSI do
 
   defp calc([], _period, results), do: {:ok, Enum.reverse(results)}
 
+  defp calc([_head | tail] = list, period, results) when length(list) < period + 1 do
+    calc(tail, period, results)
+  end
+
   defp calc([_head | tail] = list, period, results) do
-    cond do
-      length(list) >= period + 1 ->
-        averages =
-          list
-          |> Enum.take(period + 1)
-          |> Enum.chunk_every(2, 1, :discard)
-          |> Enum.map(fn [x, y] -> y - x end)
-          |> Enum.group_by(fn x -> if x > 0, do: :gain, else: :loss end)
-          |> Map.new(fn
-            {type, []} -> {type, nil}
-            {type, values} -> {type, Enum.sum(values) / period}
-          end)
-          |> Map.put_new(:loss, 0.0)
-          |> Map.put_new(:gain, 0.0)
+    averages =
+      list
+      |> Enum.take(period + 1)
+      |> Enum.chunk_every(2, 1, :discard)
+      |> Enum.map(fn [x, y] -> y - x end)
+      |> Enum.group_by(fn x -> if x > 0, do: :gain, else: :loss end)
+      |> Map.new(fn
+        {type, []} -> {type, nil}
+        {type, values} -> {type, Enum.sum(values) / period}
+      end)
+      |> Map.put_new(:loss, 0.0)
+      |> Map.put_new(:gain, 0.0)
 
-        if averages.loss == 0 do
-          calc(tail, period, [100.0 | results])
-        else
-          rs = averages.gain / abs(averages.loss)
-          rsi = 100.0 - 100.0 / (1.0 + rs)
+    if averages.loss == 0 do
+      calc(tail, period, [100.0 | results])
+    else
+      rs = averages.gain / abs(averages.loss)
+      rsi = 100.0 - 100.0 / (1.0 + rs)
 
-          calc(tail, period, [rsi | results])
-        end
-
-      true ->
-        calc(tail, period, results)
+      calc(tail, period, [rsi | results])
     end
   end
 end

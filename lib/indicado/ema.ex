@@ -66,15 +66,13 @@ defmodule Indicado.EMA do
 
   defp calc([], _period, results), do: {:ok, Enum.reverse(results)}
 
-  defp calc([head | tail], period, results) do
-    cond do
-      length(results) > 0 ->
-        [result_head | _result_tail] = results
-        calc(tail, period, [calc_ema(head, period, result_head) | results])
+  defp calc([head | tail], period, []) do
+    calc(tail, period, [calc_ema(head, period, head)])
+  end
 
-      length(results) == 0 ->
-        calc(tail, period, [calc_ema(head, period, head) | results])
-    end
+  defp calc([head | tail], period, results) do
+    [result_head | _result_tail] = results
+    calc(tail, period, [calc_ema(head, period, result_head) | results])
   end
 
   defp calc_ema(last, period, prev_ema) do

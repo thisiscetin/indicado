@@ -12,6 +12,14 @@ defmodule Indicado.MixProject do
       package: package(),
       deps: deps(),
       aliases: aliases(),
+      preferred_cli_env: [
+        "test.ci": :test
+      ],
+      dialyzer: [
+        plt_add_apps: [:ex_unit],
+        plt_core_path: "_build/#{Mix.env()}",
+        flags: [:error_handling, :race_conditions, :underspecs]
+      ],
 
       # Docs
       name: "Indicado",
@@ -49,14 +57,11 @@ defmodule Indicado.MixProject do
     ]
   end
 
-  # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
       {:dialyxir, "~> 1.0", only: [:dev], runtime: false},
       {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
       {:ex_doc, "~> 0.24", only: :dev, runtime: false}
-      # {:dep_from_hexpm, "~> 0.3.0"},
-      # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
     ]
   end
 

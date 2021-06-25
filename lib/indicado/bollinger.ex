@@ -90,19 +90,17 @@ defmodule Indicado.Bollinger do
 
   defp calc([], _period, _deviation, results), do: {:ok, Enum.reverse(results)}
 
-  defp calc([_head | tail] = list, period, deviation, results) do
-    cond do
-      length(list) >= period ->
-        row =
-          list
-          |> Enum.take(period)
-          |> bb_row(deviation)
+  defp calc([_head | tail] = list, period, deviation, results) when length(list) >= period do
+    row =
+      list
+      |> Enum.take(period)
+      |> bb_row(deviation)
 
-        calc(tail, period, deviation, [row | results])
+    calc(tail, period, deviation, [row | results])
+  end
 
-      true ->
-        calc(tail, period, deviation, results)
-    end
+  defp calc([_head | tail], period, deviation, results) do
+    calc(tail, period, deviation, results)
   end
 
   defp bb_row(list, deviation) do

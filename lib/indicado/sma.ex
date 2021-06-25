@@ -59,19 +59,17 @@ defmodule Indicado.SMA do
 
   defp calc([], _period, results), do: {:ok, Enum.reverse(results)}
 
+  defp calc([_head | tail] = list, period, results) when length(list) < period do
+    calc(tail, period, results)
+  end
+
   defp calc([_head | tail] = list, period, results) do
-    cond do
-      length(list) >= period ->
-        avg =
-          list
-          |> Enum.take(period)
-          |> Enum.sum()
-          |> Kernel./(period)
+    avg =
+      list
+      |> Enum.take(period)
+      |> Enum.sum()
+      |> Kernel./(period)
 
-        calc(tail, period, [avg | results])
-
-      true ->
-        calc(tail, period, results)
-    end
+    calc(tail, period, [avg | results])
   end
 end
