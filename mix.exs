@@ -4,9 +4,12 @@ defmodule Indicado.MixProject do
   def project do
     [
       app: :indicado,
-      version: "0.1.0",
+      version: "0.0.1",
       elixir: "~> 1.12",
+      build_embedded: Mix.env() == :prod,
       start_permanent: Mix.env() == :prod,
+      description: description(),
+      package: package(),
       deps: deps(),
 
       # Docs
@@ -24,6 +27,24 @@ defmodule Indicado.MixProject do
   def application do
     [
       extra_applications: [:logger]
+    ]
+  end
+
+  defp description do
+    """
+    Technical indicator library for Elixir with no dependencies.
+    """
+  end
+
+  defp package do
+    [
+      files: ["lib", "mix.exs", "README.md"],
+      maintainers: ["Mehmet Cetin"],
+      licenses: ["Apache 2.0"],
+      links: %{
+        "Github" => "https://github.com/thisiscetin/indicado",
+        "Docs" => "https://hexdocs.pm/indicado"
+      }
     ]
   end
 
