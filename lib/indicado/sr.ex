@@ -69,15 +69,10 @@ defmodule Indicado.SR do
       |> Enum.take(period)
       |> Enum.take(-1)
 
-    max =
+    {min, max} =
       list
       |> Enum.take(period)
-      |> Enum.max()
-
-    min =
-      list
-      |> Enum.take(period)
-      |> Enum.min()
+      |> Enum.min_max()
 
     k = (close - min) / (max - min) * 100
     calc(tail, period, [k | result])
