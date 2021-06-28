@@ -7,4 +7,5 @@ defmodule IndicadoTest do
   doctest Indicado.EMA
   doctest Indicado.MACD
   doctest Indicado.ADI
+  doctest Indicado.SR
 end

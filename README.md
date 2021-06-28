@@ -38,6 +38,7 @@ Indicators below are supported. New indicators being added regularly.
 - Moving Average Convergence Divergence ([MACD](https://www.investopedia.com/terms/m/macd.asp))
 - Relative Strength Index ([RSI](https://www.investopedia.com/terms/r/rsi.asp))
 - Simple Moving Average ([SMA](https://www.investopedia.com/terms/s/sma.asp))
+- Stochastic Oscillator ([SR](https://www.investopedia.com/terms/s/stochasticoscillator.asp))
 
 Helper math functions such as mean, stddev, variance is accessible through `Indicado.Math` module.
 
@@ -50,15 +51,15 @@ def deps do
   [
     {:indicado, "~> 0.0.1"}
   ]
-end 
+end
 ```
-Then run `mix deps.get` to install indicado. 
+Then run `mix deps.get` to install indicado.
 
 ## Usage 🛠️
 
-Indicado provides two functions on the public API of indicators. Namely `eval` and `eval!` function. 
+Indicado provides two functions on the public API of indicators. Namely `eval` and `eval!` function.
 - `eval` function calls return `{:ok, result}` or `{:error, reason}`.
-- `eval!` functions return a single result list or raises exceptions such as `NotEnoughDataError`. 
+- `eval!` functions return a single result list or raises exceptions such as `NotEnoughDataError`.
 
 Because every other indicator may expect different arguments, I recommend you check [online documentation on hexdocs](https://hexdocs.pm/indicado/Indicado.html) before using the indicado. For demonstration purposes how you can calculate a four day Simple Moving Average is shown below.
 
@@ -69,7 +70,7 @@ Because every other indicator may expect different arguments, I recommend you ch
 
 ## Contributing 🧵
 
-Please follow standard convention such as `eval` and `eval!` functions defined for all indicators inside `lib` folder. 
+Please follow standard convention such as `eval` and `eval!` functions defined for all indicators inside `lib` folder.
 Rest is easy;
 
 - Fork it!
