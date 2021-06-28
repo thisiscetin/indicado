@@ -49,7 +49,7 @@ Indicado published to [Hex](https://hex.pm/packages/indicado). Just add it to yo
 ```elixir
 def deps do
   [
-    {:indicado, "~> 0.0.1"}
+    {:indicado, "~> 0.0.2"}
   ]
 end
 ```
