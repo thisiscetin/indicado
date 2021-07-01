@@ -8,4 +8,5 @@ defmodule IndicadoTest do
   doctest Indicado.MACD
   doctest Indicado.ADI
   doctest Indicado.SR
+  doctest Indicado.OBV
 end

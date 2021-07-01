@@ -14,7 +14,7 @@ defmodule Indicado.ADI do
         }
 
   @doc """
-  Calculates ADI for the list. The list argument passed to eval function should be list of adi_data_map type spec.
+  Calculates ADI for the list. The list argument passed to eval function should be list of adi_data_map type.
 
   Returns `{:ok, adi_ist}` or `{:error, reason}`
 
@@ -37,9 +37,9 @@ defmodule Indicado.ADI do
   @doc """
   Calculates ADI for the list. The list argument passed to eval function should be list of adi_data_map type spec. Raises exceptions when arguments does not satisfy needed conditions.
 
-  Returns `{:ok, adi_ist}` or `{:error, reason}`
-
+  Returns `adi_ist` or,
   Raises `NotEnoughDataError` if the given list lenght is zero.
+
   ## Examples
 
 
