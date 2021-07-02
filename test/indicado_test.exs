@@ -9,4 +9,5 @@ defmodule IndicadoTest do
   doctest Indicado.ADI
   doctest Indicado.SR
   doctest Indicado.OBV
+  doctest Indicado.WR
 end

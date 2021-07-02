@@ -40,6 +40,7 @@ Indicators below are supported. New indicators being added regularly.
 - Relative Strength Index ([RSI](https://www.investopedia.com/terms/r/rsi.asp))
 - Simple Moving Average ([SMA](https://www.investopedia.com/terms/s/sma.asp))
 - Stochastic Oscillator ([SR](https://www.investopedia.com/terms/s/stochasticoscillator.asp))
+- Williams %R ([WR](https://www.investopedia.com/terms/w/williamsr.asp))
 
 Helper math functions such as mean, stddev, variance is accessible through `Indicado.Math` module.
 
@@ -50,7 +51,7 @@ Indicado published to [Hex](https://hex.pm/packages/indicado). Just add it to yo
 ```elixir
 def deps do
   [
-    {:indicado, "~> 0.0.2"}
+    {:indicado, "~> 0.0.3"}
   ]
 end
 ```

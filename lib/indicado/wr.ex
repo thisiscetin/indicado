@@ -1,25 +1,25 @@
-defmodule Indicado.SR do
+defmodule Indicado.WR do
   @moduledoc """
-  This is the SR module used for calculating Stochastic Oscillator.
+  This is the WR module used for calculating Williams %R.
   """
 
   @doc """
-  Calculates SR for the list.
+  Calculates WR for the list.
 
   Returns `{:ok, rs_list}` or `{:error, reason}`
 
   ## Examples
 
-      iex> Indicado.SR.eval([1, 3, 4, 3, 1, 5], 4)
-      {:ok, [66.66666666666666, 0.0, 100.0]}
+      iex> Indicado.WR.eval([1, 3, 4, 3, 1, 5], 4)
+      {:ok, [0.3333333333333333, 1.0, 0.0]}
 
-      iex> Indicado.SR.eval([1, 10, 5, 3, 9, 12, 6, 3, 4], 5)
-      {:ok, [88.88888888888889, 100.0, 33.33333333333333, 0.0, 11.11111111111111]}
+      iex> Indicado.WR.eval([1, 10, 5, 3, 9, 12, 6, 3, 4], 5)
+      {:ok, [0.1111111111111111, 0.0, 0.6666666666666666, 1.0, 0.8888888888888888]}
 
-      iex> Indicado.SR.eval([1, 3], 3)
+      iex> Indicado.WR.eval([1, 3], 3)
       {:error, :not_enough_data}
 
-      iex> Indicado.SR.eval([1, 3, 4], 0)
+      iex> Indicado.WR.eval([1, 5], 0)
       {:error, :bad_period}
 
   """
@@ -27,20 +27,21 @@ defmodule Indicado.SR do
   def eval(list, period), do: calc(list, period)
 
   @doc """
-  Calculates SR for the list. Raises exceptions when arguments does not satisfy needed conditions to calculate SR.
+  Calculates WR for the list. Raises exceptions when arguments does not satisfy needed conditions to calculate WR.
 
-  Raises `NotEnoughDataError` if the given list is not long enough for calculating RS.
+  Raises `NotEnoughDataError` if the given list is not long enough for calculating WR.
+
   Raises `BadPeriodError` if period is an unacceptable number.
 
   ## Examples
 
-      iex> Indicado.SR.eval!([1, 3, 5, 7], 2)
-      [100.0, 100.0, 100.0]
+      iex> Indicado.WR.eval!([1, 3, 4, 3, 1, 5], 4)
+      [0.3333333333333333, 1.0, 0.0]
 
-      iex> Indicado.SR.eval!([1, 3], 3)
+      iex> Indicado.WR.eval!([1, 3], 3)
       ** (NotEnoughDataError) not enough data
 
-      iex> Indicado.SR.eval!([1, 3, 4], 0)
+      iex> Indicado.WR.eval!([1, 5], 0)
       ** (BadPeriodError) bad period
 
   """
@@ -76,7 +77,7 @@ defmodule Indicado.SR do
       |> Enum.take(period)
       |> Enum.min_max()
 
-    k = (close - min) / (max - min) * 100
-    calc(tail, period, [k | results])
+    wr = (max - close) / (max - min)
+    calc(tail, period, [wr | results])
   end
 end
