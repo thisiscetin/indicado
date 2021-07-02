@@ -19,7 +19,10 @@
 
 ## What can you do with this library ❔
 
-One idea is, you can follow up the cryptocurrency [trading bot series](https://www.youtube.com/watch?v=wVYIx7M6o28) of Frathon here. You can bring this library and a similar trading infrastructure explained in the video together. So, you can generate trading strategies with the indicators below and increase your chances of profiting.
+This library can be used as an add-on to [Kamil Skorwon's](https://twitter.com/kamilskowron) great project [Hands-on Elixir & OTP: Cryptocurrency trading bot](https://www.elixircryptobot.com), at some point. So, you can create sophisticated trading strategies that may better fit your risk appetite. You can also use this library for your custom solutions around automated trading/testing/strategy building.
+
+In the future, in addition to supporting the community, [I](https://twitter.com/thisiscetin) plan to release more open source tools around strategy building, backtesting, and numerical analysis.
+
 
 ## Table of Contents 📋
 - [Indicado](#indicado-)
