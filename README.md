@@ -38,6 +38,7 @@ Indicators below are supported. New indicators being added regularly.
 - Accumulation/Distribution Line ([ADI](https://www.investopedia.com/terms/a/accumulationdistribution.asp))
 - Bollinger Bands ([BB](https://www.investopedia.com/terms/b/bollingerbands.asp))
 - Exponential Moving Average ([EMA](https://www.investopedia.com/terms/e/ema.asp))
+- Money Flow Index ([MFI](https://www.investopedia.com/terms/m/mfi.asp))
 - Moving Average Convergence Divergence ([MACD](https://www.investopedia.com/terms/m/macd.asp))
 - On-Balance Volume ([OBV](https://www.investopedia.com/terms/o/onbalancevolume.asp))
 - Relative Strength Index ([RSI](https://www.investopedia.com/terms/r/rsi.asp))

@@ -50,6 +50,7 @@ defmodule Indicado.ADI do
       ** (NotEnoughDataError) not enough data
 
   """
+  @spec eval!(nonempty_list(adi_data_map)) :: nonempty_list(float) | no_return
   def eval!(list) do
     case calc(list) do
       {:ok, result} -> result
