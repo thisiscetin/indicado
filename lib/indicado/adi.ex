@@ -72,11 +72,11 @@ defmodule Indicado.ADI do
     calc(tail, [rhead + clv(head) * head.volume | results])
   end
 
-  defp clv(row) when row.high != row.low do
-    (row.close - row.low - (row.high - row.close)) / (row.high - row.low)
+  defp clv(row) when row.high == row.low do
+    0
   end
 
-  defp clv(_row) do
-    0
+  defp clv(row) do
+    (row.close - row.low - (row.high - row.close)) / (row.high - row.low)
   end
 end
