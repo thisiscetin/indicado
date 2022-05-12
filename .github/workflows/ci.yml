@@ -13,39 +13,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Elixir
-      uses: erlef/setup-elixir@885971a72ed1f9240973bd92ab57af8c1aa68f24
-      with:
-        elixir-version: '1.12.1' # Define the elixir version [required]
-        otp-version: '24.0' # Define the OTP version [required]
-    - name: Restore dependencies cache
-      uses: actions/cache@v2
-      with:
-        path: deps
-        key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
-        restore-keys: ${{ runner.os }}-mix-
+      - uses: actions/checkout@v2
+      - name: Set up Elixir
+        uses: erlef/setup-elixir@885971a72ed1f9240973bd92ab57af8c1aa68f24
+        with:
+          elixir-version: '1.12.1' # Define the elixir version [required]
+          otp-version: '24.0' # Define the OTP version [required]
+      - name: Run mix deps.get
+        run: mix deps.get
 
-    - name: Run mix deps.get
-      run: mix deps.get --only test
+      - name: Run mix format
+        run: mix format --check-formatted
 
-    - name: Run mix format
-      run: mix format --check-formatted
+      - name: Run mix deps.unlock
+        run: mix deps.unlock --check-unused
 
-    - name: Run mix deps.unlock
-      run: mix deps.unlock --check-unused
+      - name: Run mix deps.compile
+        run: mix deps.compile
 
-    - name: Run mix deps.compile
-      run: mix deps.compile
+      - name: Run mix compile
+        run: mix compile --warnings-as-errors
 
-    - name: Run mix compile
-      run: mix compile --warnings-as-errors
+      - name: Run credo
+        run: mix credo --strict
 
-    - name: Run credo
-      run: mix credo --strict
+      - name: Run mix test
+        run: mix test
 
-    - name: Run mix test
-      run: mix test
-
-    - name: Run dialyzer
-      run: mix dialyzer
+      - name: Run dialyzer
+        run: mix dialyzer
