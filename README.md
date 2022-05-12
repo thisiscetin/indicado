@@ -67,11 +67,11 @@ Indicado provides two functions on the public API of indicators. Namely `eval` a
 - `eval` function calls return `{:ok, result}` or `{:error, reason}`.
 - `eval!` functions return a single result list or raises exceptions such as `NotEnoughDataError`.
 
-Because every other indicator may expect different arguments, I recommend you check [online documentation on hexdocs](https://hexdocs.pm/indicado/Indicado.html) before using the indicado. For demonstration purposes how you can calculate a four day Simple Moving Average is shown below.
+Because every other indicator may expect different arguments, I recommend you check [online documentation on hexdocs](https://hexdocs.pm/indicado/Indicado.html) before using the indicado. For demonstration purposes how you can calculate a two day Simple Moving Average is shown below.
 
 ```elixir
-  iex(2)> Indicado.SMA.eval([1.0, 5.0, 7.4, 12.5, 16,4], 4)
-  {:ok, [6.475, 10.225, 9.975]}
+  iex(2)> Indicado.SMA.eval([1, 3, 5, 7], 2)
+  {:ok, [2.0, 4.0, 6.0]}
 ```
 
 ## Contributing 🧵
